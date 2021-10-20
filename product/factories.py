@@ -23,9 +23,13 @@ class ProductFactory(factory.django.DjangoModelFactory):
     title = factory.Faker('pystr')
 
     @factory.post_generation
-    def category(obj, create, extracted, **kwargs):
+    def category(self, create, extracted, **kwargs):
         if not create:
             return
+
+        if extracted:
+            for category in extracted:
+                self.category.add(category)
 
     class Meta:
         model = Product
