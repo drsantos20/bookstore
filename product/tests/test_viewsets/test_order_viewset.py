@@ -9,8 +9,10 @@ from rest_framework.test import APITestCase, APIClient
 
 from django.urls import reverse
 
-from ecommerce.product.factories import ProductFactory
-from ecommerce.product.models import Product
+from product.factories import CategoryFactory, ProductFactory
+from order.factories import UserFactory
+from product.models import Product
+from order.models import Order
 
 
 class TestOrderViewSet(APITestCase):
@@ -32,3 +34,27 @@ class TestOrderViewSet(APITestCase):
         self.assertEqual(product_data['title'], self.product.title)
         self.assertEqual(product_data['price'], self.product.price)
         self.assertEqual(product_data['active'], self.product.active)
+
+    def test_create_order(self) -> None:
+        user = UserFactory()
+        product = ProductFactory()
+        data = json.dumps({
+            'user': user.id,
+            'product': [{
+                'id': product.id
+            }],
+        })
+
+        response = self.client.post(
+            reverse('order-list', kwargs={'version': 'v1'}),
+            data=data,
+            content_type='application/json'
+        )
+
+        import pdb; pdb.set_trace()
+
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+        created_order = Order.objects.get(user=user)
+
+
