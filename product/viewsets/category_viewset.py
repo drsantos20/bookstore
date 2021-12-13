@@ -1,7 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-
 from rest_framework.viewsets import ModelViewSet
 
 from product.models import Category
