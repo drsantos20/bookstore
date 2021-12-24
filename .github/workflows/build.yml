@@ -33,6 +33,6 @@ jobs:
       shell: bash
       run: python -m poetry install
 
-    - name: Test with pytest
+    - name: Test
       run: |
-        python -m poetry run python -m pytest -v tests
+        poetry run python manage.py test
