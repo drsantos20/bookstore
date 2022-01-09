@@ -42,9 +42,9 @@ Docker && docker-compose
 
 5. Run tests inside of docker:
 
-  ```shell
-  docker-compose exec web python manage.py test
-  ```
+   ```shell
+   docker-compose exec web python manage.py test
+   ```
 
 
 
