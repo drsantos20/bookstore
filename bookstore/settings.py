@@ -159,3 +159,4 @@ INTERNAL_IPS = [
 # ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'https://dry-tundra-06477.herokuapp.com']
+
