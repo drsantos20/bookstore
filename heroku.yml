@@ -1,7 +1,5 @@
 build:
   docker:
     web: Dockerfile
-release:
-  image: web
-  command:
-    - python manage.py runserver
+run:
+  web: gunicorn hello_django.wsgi:application --bind 0.0.0.0:$PORT
