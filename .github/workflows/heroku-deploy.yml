@@ -43,6 +43,7 @@ jobs:
           SQL_DATABASE: ${{ secrets.SQL_DATABASE }}
           SQL_USER: ${{ secrets.SQL_USER }}
           SQL_PASSWORD: ${{ secrets.SQL_PASSWORD }}
+          SQL_ENGINE: $ {{ secrets.SQL_ENGINE }}
       - name: Add Heroku remote
         run: heroku git:remote --app $HEROKU_APP_NAME
         env:
