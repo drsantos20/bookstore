@@ -1,0 +1,22 @@
+name: Deploy pythonanywhere webapp
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+
+      - name: Reload webapp
+        uses: jensvog/pythonanywhere-webapp-reload-action@v1
+        with:
+          host: 'www.pythonanywhere.com'
+          username: ${{ secrets.USERNAME }}
+          api-token: ${{ secrets.API_TOKEN }}
+          domain-name: ${{ secrets.DOMAIN_NAME }}
